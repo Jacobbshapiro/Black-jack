@@ -30,7 +30,11 @@ function shuffleArray (arrCards) {
 
 function displayCard() {
     let card1 = document.getElementById('card 1').classList
-    card1.add('c03')
+    card1.add(arrCards[idxDeck])
+    idxDeck++
+    let card2 = document.getElementById('card 2').classList
+    card2.add(arrCards[idxDeck])
+    idxDeck++
 }
 
 
