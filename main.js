@@ -1,38 +1,48 @@
 // Constants
-const MAX_CARDS = 52
-const SPADES = 1-10
-const HEARTS = 1-10
-const CLUBS = 1-10
-const CLOVERS = 1-10
-const PLAYER = 1
-const JACK = 10
-const QUEEN = 10
-const KING = 10
-const ACE = 1 || 11
+
 
 
 // Variables
-//player recieves 2 random cards on start of game
+
+let arrCards = ['c02','c03','c04','c05'];
+let idxDeck = 0; 
 
 
 
 
 // Cached element referances
-//ask player stand or hit if hit player recieves 1 card
-//if bust game is over
-
-
-
+const dealBtn = document.getElementById('deal')
+shuffleArray(arrCards)
+// element.classList.add('');
 
 
 // Event listeners
-//clicks on stand and hit button
+dealBtn.addEventListener('click', displayCard)
 
 
 
 
 
 // Functions
-//function for dealing
-//function for stand 
-//function for hit
+function shuffleArray (arrCards) {
+    arrCards.sort(() => Math.random() - 0.5);
+}
+
+function displayCard() {
+    let card1 = document.getElementById('card 1').classList
+    card1.add('c03')
+}
+
+
+
+
+
+
+
+
+
+
+// function getCards() {
+//     const randomInt = Math.floor(Math.random() * arrCards.length)
+//     return arrCards[randomInt]
+// }
