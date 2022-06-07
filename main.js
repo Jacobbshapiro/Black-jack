@@ -13,13 +13,14 @@ let idxDeck = 0;
 // Cached element referances
 const dealBtn = document.getElementById('deal')
 shuffleArray(arrCards)
-
+const shuffleBtn = document.getElementById('shuffle')
+const hitBtn = document.getElementById('hit')
 
 
 // Event listeners
-dealBtn.addEventListener('click', displayCard)
-
-
+dealBtn.addEventListener('click', displayCard);
+shuffleBtn.addEventListener('click', reset);
+hitBtn.addEventListener('click', hit);
 
 
 
@@ -29,18 +30,21 @@ function shuffleArray (arrCards) {
 }
 
 function displayCard() {
-    if (idxDeck > 1) {
-        let clear1 = document.getElementById('card 1').classList;
-        clear1.classList.remove(clear1.list[1]);
+    const button = document.getElementById('deal').disabled = true
+    const shuffle = document.getElementById('shuffle').disabled = false
 
-        
+    let card1 = document.getElementById('card1').classList;
+    card1.add(arrCards[idxDeck]);
+    idxDeck++;
+    let card2 = document.getElementById('card2').classList;
+    card2.add(arrCards[idxDeck]);
+    idxDeck++;
+}
 
-    }
-    
-    let card1 = document.getElementById('card 1').classList
-    card1.add(arrCards[idxDeck])
-    idxDeck++
-    let card2 = document.getElementById('card 2').classList
-    card2.add(arrCards[idxDeck])
-    idxDeck++
+function reset() {
+    location.reload();
+}
+
+function hit() {
+    document.createElement('div')
 }
