@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family:'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
@@ -13,4 +13,8 @@ background-color: antiquewhite;
 
 h1{
     font-size: 35px;
+}
+
+#your-cards{
+    padding-top: 50px;
 }
