@@ -4,10 +4,64 @@
 
 // Variables
 
-const arrCards = ['cA', 11,'c02', 2,'c03', 3,'c04', 4,'c05', 5,'c06', 6,'c07', 7,'c08', 8,'c09', 9,'c10', 10, 'cJ', 10,'cQ', 10,'cK', 10,'dA', 11,'d02', 2,'d03', 3,'d04', 4,'d05', 5,'d06', 6,'d07', 7,'d08', 8,'d09', 9,'d10', 10,'dJ', 10,'dQ', 10,'dK', 10,'hA', 11,'h02', 2,'h03', 3,'h04', 4,'h05', 5,'h06', 6,'h07', 7,'h08', 8,'h09', 9,'h10', 10,'hJ', 10,'hQ', 10,'hK', 10,'sA', 11,'s02', 2,'s03', 3,'s04', 4,'s05', 5,'s06', 6,'s07', 7,'s08', 8,'s09', 9,'s10', 10,'sJ', 10,'sQ', 10,'sK', 10];
+const arrCards = [
+    {'card': 'cA', 'value': 11},
+    {'card': 'c02', 'value': 2},
+    {'card': 'c03', 'value': 3},
+    {'card': 'c04', 'value': 4},
+    {'card': 'c05', 'value': 5},
+    {'card': 'c06', 'value': 6},
+    {'card': 'c07', 'value': 7},
+    {'card': 'c08', 'value': 8},
+    {'card': 'c09', 'value': 9},
+    {'card': 'c10', 'value': 10},
+    {'card': 'cJ', 'value': 10},
+    {'card': 'cQ', 'value': 10},
+    {'card': 'cK', 'value': 10},
+    {'card': 'dA', 'value': 11},
+    {'card': 'd02', 'value': 2},
+    {'card': 'd03', 'value': 3},
+    {'card': 'd04', 'value': 4},
+    {'card': 'd05', 'value': 5},
+    {'card': 'd06', 'value': 6},
+    {'card': 'd07', 'value': 7},
+    {'card': 'd08', 'value': 8},
+    {'card': 'd09', 'value': 9},
+    {'card': 'd10', 'value': 10},
+    {'card': 'dJ', 'value': 10},
+    {'card': 'dQ', 'value': 10},
+    {'card': 'dK', 'value': 10},
+    {'card': 'hA', 'value': 11},
+    {'card': 'h02', 'value': 2},
+    {'card': 'h03', 'value': 3},
+    {'card': 'h04', 'value': 4},
+    {'card': 'h05', 'value': 5},
+    {'card': 'h06', 'value': 6},
+    {'card': 'h07', 'value': 7},
+    {'card': 'h08', 'value': 8},
+    {'card': 'h09', 'value': 9},
+    {'card': 'h10', 'value': 10},
+    {'card': 'hJ', 'value': 10},
+    {'card': 'hQ', 'value': 10},
+    {'card': 'hK', 'value': 10},
+    {'card': 'sA', 'value': 11},
+    {'card': 's02', 'value': 2},
+    {'card': 's03', 'value': 3},
+    {'card': 's04', 'value': 4},
+    {'card': 's05', 'value': 5},
+    {'card': 's06', 'value': 6},
+    {'card': 's07', 'value': 7},
+    {'card': 's08', 'value': 8},
+    {'card': 's09', 'value': 9},
+    {'card': 's10', 'value': 10},
+    {'card': 'sJ', 'value': 10},
+    {'card': 'sQ', 'value': 10},
+    {'card': 'sK', 'value': 10}
+]
 
 let idxDeck = 0; 
 let score = 0;
+let aces = 0;
 
 
 // Cached element referances
@@ -34,19 +88,25 @@ function displayCard() {
     const shuffle = document.getElementById('shuffle').disabled = false
     const hit = document.getElementById('hit').disabled = false
 
+
     let card1 = document.getElementById('card0').classList;
-    card1.add(arrCards[idxDeck]);
+    card1.add(arrCards[idxDeck].card);
+    score = score + arrCards[idxDeck].value;
+    if (arrCards[idxDeck].value === 11){
+        aces++
+    }
     idxDeck++;
-    
-    score=score+arrCards[idxDeck];
-    idxDeck++
     
     let card2 = document.getElementById('card1').classList;
-    card2.add(arrCards[idxDeck]);
+    card2.add(arrCards[idxDeck].card);
+    score = score + arrCards[idxDeck].value;
+    if (arrCards[idxDeck].value === 11){
+        aces++
+    }
     idxDeck++;
     
-    score=score+arrCards[idxDeck];
-    idxDeck++
+
+    let scoreEl = document.getElementById('Score').innerHTML = 'Score: ' + score;
 }
 
 function reset() {
@@ -60,9 +120,16 @@ function hit() {
     const hitMe = document.getElementById('your-cards')
     hitMe.appendChild(div);
     let newCard = document.getElementById('card' + idxDeck).classList;
-    newCard.add(arrCards[idxDeck]);
+    newCard.add(arrCards[idxDeck].card);
+    score = score + arrCards[idxDeck].value;
+    if (arrCards[idxDeck].value === 11){
+        aces++
+    }
     idxDeck++;
-    
-    score=score+arrCards[idxDeck];
-    idxDeck++
+    let scoreEl = document.getElementById('Score').innerHTML = 'Score: ' + score;
+
+    if (score > 21) {
+        let scoreEl = document.getElementById('Score').innerHTML = 'Busted!'
+        const hit = document.getElementById('hit').disabled = true;
+    }
 }
