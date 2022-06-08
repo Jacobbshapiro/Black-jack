@@ -1,8 +1,4 @@
-// Constants
-
-
-
-// Variables
+// Variables //
 
 const arrCards = [
     {'card': 'cA', 'value': 11},
@@ -64,31 +60,32 @@ let score = 0;
 let aces = 0;
 
 
-// Cached element referances
+// Cached element referances //
 const dealBtn = document.getElementById('deal')
 shuffleArray(arrCards)
 const shuffleBtn = document.getElementById('shuffle')
 const hitBtn = document.getElementById('hit')
 
 
-// Event listeners
+// Event listeners //
 dealBtn.addEventListener('click', displayCard);
 shuffleBtn.addEventListener('click', reset);
 hitBtn.addEventListener('click', hit);
 
 
 
-// Functions
+// Functions //
 function shuffleArray (arrCards) {
     arrCards.sort(() => Math.random() - 0.5);
 }
 
 function displayCard() {
+    // Make sure unneeded buttons are disabled
     const button = document.getElementById('deal').disabled = true
     const shuffle = document.getElementById('shuffle').disabled = false
     const hit = document.getElementById('hit').disabled = false
 
-
+    // Display a card, and update the score
     let card1 = document.getElementById('card0').classList;
     card1.add(arrCards[idxDeck].card);
     score = score + arrCards[idxDeck].value;
@@ -97,6 +94,7 @@ function displayCard() {
     }
     idxDeck++;
     
+    // Display card 2 and update te score
     let card2 = document.getElementById('card1').classList;
     card2.add(arrCards[idxDeck].card);
     score = score + arrCards[idxDeck].value;
@@ -105,13 +103,18 @@ function displayCard() {
     }
     idxDeck++;
     
-
-    let scoreEl = document.getElementById('Score').innerHTML = 'Score: ' + score;
+    // Check for Blackjack condition
+    if (score === 21) {
+        let scoreEl = document.getElementById('Score').innerHTML = 'Black Jack!'
+    } else {
+        let scoreEl = document.getElementById('Score').innerHTML = 'Score: ' + score;
+    }
 }
 
 function reset() {
     location.reload();
 }
+
 
 function hit() {
     const div = document.createElement('div')
@@ -122,12 +125,17 @@ function hit() {
     let newCard = document.getElementById('card' + idxDeck).classList;
     newCard.add(arrCards[idxDeck].card);
     score = score + arrCards[idxDeck].value;
+    
+    //Checks for ace and still need to add score logic
     if (arrCards[idxDeck].value === 11){
         aces++
     }
     idxDeck++;
+    
+    //Adds score to screeen
     let scoreEl = document.getElementById('Score').innerHTML = 'Score: ' + score;
 
+    //If score goes over 21 you bust/lose
     if (score > 21) {
         let scoreEl = document.getElementById('Score').innerHTML = 'Busted!'
         const hit = document.getElementById('hit').disabled = true;
