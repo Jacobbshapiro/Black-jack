@@ -115,6 +115,7 @@ function displayCard() {
     if (score === 21) {
         let scoreEl = document.getElementById('Score').innerHTML = 'Black Jack!'
         const hit = document.getElementById('hit').disabled = true
+        const stand = document.getElementById('stand').disabled = true
     } else {
         let scoreEl = document.getElementById('Score').innerHTML = 'Score: ' + score;
     }
@@ -155,6 +156,7 @@ function hit() {
     if (score > 21) {
         let scoreEl = document.getElementById('Score').innerHTML = 'Busted!'
         const hit = document.getElementById('hit').disabled = true;
+        const stand = document.getElementById('stand').disabled = true
     }
 }
 
