@@ -65,12 +65,14 @@ const dealBtn = document.getElementById('deal')
 shuffleArray(arrCards)
 const shuffleBtn = document.getElementById('shuffle')
 const hitBtn = document.getElementById('hit')
+const standBtn = document.getElementById('stand')
 
 
 // Event listeners //
 dealBtn.addEventListener('click', displayCard);
 shuffleBtn.addEventListener('click', reset);
 hitBtn.addEventListener('click', hit);
+standBtn.addEventListener('click', stand)
 
 
 
@@ -102,13 +104,22 @@ function displayCard() {
         aces++
     }
     idxDeck++;
+
+     //check for two aces on deal
+     if (score === 22) {
+        aces -- 
+        score = score - 10
+    }
     
     // Check for Blackjack condition
     if (score === 21) {
         let scoreEl = document.getElementById('Score').innerHTML = 'Black Jack!'
+        const hit = document.getElementById('hit').disabled = true
     } else {
         let scoreEl = document.getElementById('Score').innerHTML = 'Score: ' + score;
     }
+
+   
 }
 
 function reset() {
@@ -130,6 +141,11 @@ function hit() {
     if (arrCards[idxDeck].value === 11){
         aces++
     }
+    //decides if ace will be 11 or 1 depending on score
+    if (score > 21 && aces > 0) {
+        score = score - 10;
+        aces --
+    }
     idxDeck++;
     
     //Adds score to screeen
@@ -139,5 +155,16 @@ function hit() {
     if (score > 21) {
         let scoreEl = document.getElementById('Score').innerHTML = 'Busted!'
         const hit = document.getElementById('hit').disabled = true;
+    }
+}
+
+function stand () {
+    const hit = document.getElementById('hit').disabled = true
+    const deal = document.getElementById('deal').disabled = true
+    const stand = document.getElementById('stand').disabled = true
+    if (score > 16 && score < 22) {
+        let scoreEl = document.getElementById('Score').innerHTML = 'Winner!';
+    } else {
+        let scoreEl = document.getElementById('Score').innerHTML = 'Loser!'
     }
 }
