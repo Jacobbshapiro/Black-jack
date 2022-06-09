@@ -1,9 +1,14 @@
-![Black Jack wireframe](https://i.imgur.com/w0UGaly.png)
+![Black Jack wireframe](https://i.imgur.com/ynw9mTp.png)
 
+<!-- (https://i.imgur.com/w0UGaly.png) -->
 # Black Jack by Jacob Shapiro
 
 ## Rules
-In this version of black jack the deal button will give you 2 random cards and you will have the choise to stand or hit. When standing the game will end. When you hit you will be given a card and you can choose to stand or hit again. If you hit and go over 21 you will bust and you will lose. Game over.
+In this version of black jack the deal button will give you 2 random cards and you will have the choise to stand or hit. When standing the game will end. When you hit you will be given a card and you can choose to stand or hit again. If you hit and go over 21 you will bust and you will lose. If you get 17 but less then 22 you win.
+
+## Future Enhancements
+Add cookies into browser to keep your score.
+Add a dealer to play against.
 
 ## Psuedocode
 // Constants
@@ -18,29 +23,18 @@ const QUEEN = 10
 const KING = 10
 const ACE = 1 || 11
 
-
 // Variables
-//player recieves 2 random cards on start of game
-
-
-
+player recieves 2 random cards on start of game
 
 // Cached element referances
-//ask player stand or hit if hit player recieves 1 card
-//if bust game is over
-
-
-
-
+ask player stand or hit if hit player recieves 1 card
+if bust game is over
 
 // Event listeners
-//clicks on stand and hit button
-
-
-
-
+clicks on stand and hit button
 
 // Functions
-//function for dealing
-//function for stand 
-//function for hit
+function for dealing
+function for stand 
+function for hit
+function to shuffle 
