@@ -87,16 +87,16 @@ function displayCard() {
     const shuffle = document.getElementById('shuffle').disabled = false
     const hit = document.getElementById('hit').disabled = false
 
-    // Display a card, and update the score
+    // Display card 1 and update the score
     let card1 = document.getElementById('card0').classList;
     card1.add(arrCards[idxDeck].card);
     score = score + arrCards[idxDeck].value;
-    if (arrCards[idxDeck].value === 11){
+    if (arrCards[idxDeck].value === 11) {
         aces++
     }
     idxDeck++;
     
-    // Display card 2 and update te score
+    // Display card 2 and update the score
     let card2 = document.getElementById('card1').classList;
     card2.add(arrCards[idxDeck].card);
     score = score + arrCards[idxDeck].value;
@@ -138,7 +138,7 @@ function hit() {
     newCard.add(arrCards[idxDeck].card);
     score = score + arrCards[idxDeck].value;
     
-    //Checks for ace and still need to add score logic
+    //Checks for ace
     if (arrCards[idxDeck].value === 11){
         aces++
     }
