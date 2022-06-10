@@ -2,6 +2,9 @@
 
 # Black Jack by Jacob Shapiro
 
+## Technologies
+html/js/css
+
 ## Rules
 In this version of black jack the deal button will give you 2 random cards and you will have the choise to stand or hit. When standing the game will end. When you hit you will be given a card and you can choose to stand or hit again. If you hit and go over 21 you will bust and you will lose. If you get 17 but less then 22 you win.
 
